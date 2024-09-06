@@ -26,8 +26,8 @@ This project is a research assistant application built using `Streamlit`, `LangC
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-repo/chat-research-assistant.git
-    cd chat-research-assistant
+    git clone https://github.com/tuckwoor/nexus_research.git
+    cd nexus_research
     ```
 
 2. Install the required dependencies:
