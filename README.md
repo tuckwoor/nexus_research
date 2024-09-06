@@ -1,4 +1,4 @@
-# Chat-based AI Research Assistant
+# nexus research - Chat-based AI Research Assistant
 
 ## Overview
 
