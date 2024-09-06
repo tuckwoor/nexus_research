@@ -1,0 +1,16 @@
+{
+  "personal_info": {
+    "name": "Joe Bloggs",
+    "occupation": "Business Analyst",
+    "interests": [
+      "AI",
+      "Machine Learning",
+      "Data Science"
+    ]
+  },
+  "location": "UK",
+  "additional_info": "Born in February 1985.\nHas a female cat called bubbles, who is 3 years old.\nHas a girlfriend called Susan. They have been together since 2005.",
+  "date_time": "2024-09-03 17:56:02 BST",
+  "user_city": "Newcastle",
+  "user_country": "GB"
+}
