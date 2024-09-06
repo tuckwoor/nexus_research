@@ -22,6 +22,8 @@ This project is a research assistant application built using `Streamlit`, `LangC
 - `OpenAI API`
 - `Chroma`
 - `.env` file for API keys
+- `crewai` library
+- SearXNG instance
 
 ## Installation
 
