@@ -12,6 +12,7 @@ This project is a research assistant application built using `Streamlit`, `LangC
 - **Dynamic Context Handling**: Automatically integrates location and personal information into responses.
 - **Web Scraping & Search Integration**: Can fetch real-time information from web searches using SearXNG and crawl websites for information.
 - **Multi-agent System**: Uses a team of crewai agents to perform research and generate high-quality responses based on both live and stored data.
+- **User Prompt Optimization**: Optimizes the user's prompt for the LLM to improve the quality of the response.
 
 ## Requirements
 

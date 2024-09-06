@@ -9,19 +9,12 @@ from langchain.schema import HumanMessage, AIMessage
 from langchain.memory import ConversationBufferMemory
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-import re
 import time
-import threading
 import chromadb
-from chromadb.config import Settings
 import uuid
 from datetime import datetime
 import pytz
 import geocoder
-from bs4 import BeautifulSoup
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from urllib.parse import urlparse
-from collections import Counter
 from requests.exceptions import RequestException
 import streamlit as st
 
@@ -32,6 +25,7 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+SEARXNG_ENDPOINT = os.getenv("SEARXNG_ENDPOINT")
 
 # Define model configurations
 model_configs = {
@@ -91,6 +85,7 @@ def load_conversations():
         try:
             with open(CONVERSATIONS_FILE, 'r') as f:
                 conversations = json.load(f)
+                print("Loaded conversations from file:", conversations)  # Debug print
                 for conv_id, conv_data in conversations.items():
                     conv_data["vector_store"] = initialize_vector_store(conv_id)
                     conv_data["memory"] = ConversationBufferMemory(return_messages=True)
@@ -197,8 +192,21 @@ def crawl_webpage(url):
         print(f"Error crawling {url}: {str(e)}")
         return ""
 
-def searxng_search(query):
-    url = "http://192.168.0.107:5147/search"
+def searxng_search(query_input):
+    url = SEARXNG_ENDPOINT
+    if not url:
+        raise ValueError("SEARXNG_ENDPOINT is not set in the .env file")
+    
+    # Handle different input types
+    if isinstance(query_input, dict):
+        query = query_input.get('query', '') or query_input.get('tool_input', {}).get('string', '')
+    else:
+        query = str(query_input)
+    
+    if not query:
+        print("Error: Empty query received")
+        return []
+
     params = {
         "q": query,
         "format": "json",
@@ -211,6 +219,7 @@ def searxng_search(query):
 
     for attempt in range(max_retries):
         try:
+            print(f"Performing search with query: {query}")
             response = requests.get(url, params=params, timeout=10)
             response.raise_for_status()
             results = response.json()
@@ -347,7 +356,7 @@ def search_with_print(query_input, chat_history, super_context):
 # Update the search_tool definition
 search_tool = Tool(
     name="SearXNGSearch",
-    func=lambda query_input: search_with_print(query_input, st.session_state.chat_history, load_super_context()),
+    func=lambda query_input: searxng_search(query_input),
     description="A tool for performing web searches using a local SearXNG server to get relevant results. If no results are found, try rephrasing the query or breaking it into smaller parts."
 )
 
@@ -574,6 +583,10 @@ def main():
     # Initialize session state variables
     if 'conversations' not in st.session_state:
         st.session_state.conversations = load_conversations()
+    
+    # Debug print
+    print("Loaded conversations:", st.session_state.conversations)
+    
     if 'current_conversation' not in st.session_state or st.session_state.current_conversation not in st.session_state.conversations:
         st.session_state.current_conversation = create_new_conversation()
     if 'chat_history' not in st.session_state:
@@ -651,6 +664,15 @@ def main():
             if conv_date not in grouped_conversations:
                 grouped_conversations[conv_date] = []
             grouped_conversations[conv_date].append((conv_id, summary))
+
+    # Debug print
+    print("Number of conversations:", len(st.session_state.conversations))
+    
+    # Debug print
+    print("Sorted conversations:", sorted_conversations)
+    
+    # Debug print
+    print("Grouped conversations:", grouped_conversations)
 
     for date, conversations in grouped_conversations.items():
         with st.sidebar.expander(date, expanded=False):

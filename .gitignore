@@ -1,5 +1,7 @@
 conversations.json
 .env
 super_context.json
+second_level_contexts.json
 chroma_db/
 venv/
+
