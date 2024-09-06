@@ -11,7 +11,7 @@ This project is a research assistant application built using `Streamlit`, `LangC
 - **Vector-based Memory**: Uses vector embeddings and `Chroma` for efficient retrieval of past conversations.
 - **Dynamic Context Handling**: Automatically integrates location and personal information into responses.
 - **Web Scraping & Search Integration**: Can fetch real-time information from web searches using SearXNG and crawl websites for information.
-- **Multi-agent System**: Uses a team of agents to perform research and generate high-quality responses based on both live and stored data.
+- **Multi-agent System**: Uses a team of crewai agents to perform research and generate high-quality responses based on both live and stored data.
 
 ## Requirements
 
