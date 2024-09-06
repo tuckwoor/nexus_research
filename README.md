@@ -43,6 +43,7 @@ This project is a research assistant application built using `Streamlit`, `LangC
     OPENAI_API_KEY=<your-openai-api-key>
     SERPER_API_KEY=<your-serper-api-key>
     GROQ_API_KEY=<your-groq-api-key>
+    SEARXNG_ENDPOINT=<your-searxng-endpoint>
     ```
 
 4. (Optional) Set up a local SearXNG instance for web search results.
