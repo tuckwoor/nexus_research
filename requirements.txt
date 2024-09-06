@@ -1,0 +1,12 @@
+python-dotenv
+crewai
+langchain
+langchain-openai
+langchain-community
+openai
+requests
+chromadb
+pytz
+geocoder
+beautifulsoup4
+streamlit
