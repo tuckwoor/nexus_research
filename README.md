@@ -48,6 +48,8 @@ This project is a research assistant application built using `Streamlit`, `LangC
 
 4. (Optional) Set up a local SearXNG instance for web search results.
 
+5. Remove the _sample from the .json filenames and update the contents if required.
+
 ## How to Use
 
 1. **Run the application:**
