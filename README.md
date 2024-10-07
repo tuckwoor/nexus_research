@@ -72,6 +72,14 @@ This project is a research assistant application built using `Streamlit`, `LangC
 - **Context and Memory**: The assistant uses `ConversationBufferMemory` to remember previous chats and provide contextually relevant responses.
 - **Web Scraping & Searching**: Web search results are fetched using SearXNG, and web pages can be scraped using BeautifulSoup for additional information.
 
+## Customization## Next steps
+
+- Refactoring code into modular structure
+- Parallel processing and asynchronous operations to improve speed
+- RAG system using RAG performance improvement techniques e.g. graphRAG
+- Auto transcript of monitored youtube playlists to be incorporated into RAG system
+- Response rating (thumbs up / down)
+
 ## Customization
 
 You can add new models by updating the `model_configs` dictionary. Define the model class, parameters, and API details as needed.
