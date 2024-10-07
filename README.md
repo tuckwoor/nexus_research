@@ -6,7 +6,7 @@ This project is a research assistant application built using `Streamlit`, `LangC
 
 ## Features
 
-- **Multi-model Integration**: Supports multiple AI models such as GPT-3.5, GROQ, and custom models (like LM Studio).
+- **Multi-model Integration**: Supports multiple AI models such as GPT-3.5, GROQ, and custom local models (via LM Studio / Ollama).
 - **Persistent Conversation Storage**: Stores conversation history and associated context for continuity across sessions.
 - **Vector-based Memory**: Uses vector embeddings and `Chroma` for efficient retrieval of past conversations.
 - **Dynamic Context Handling**: Automatically integrates location and personal information into responses.
