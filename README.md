@@ -82,6 +82,7 @@ This project is a research assistant application built using `Streamlit`, `LangC
 - Response rating (thumbs up / down)
 - More search engine options other than SearXNG (Serper, Google Custom Search API etc)
 - Better web crawl options (currently beautifulsoup)
+- Improve UI (move away from streamlit)
 
 ## Customization
 
