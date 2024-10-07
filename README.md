@@ -77,7 +77,7 @@ This project is a research assistant application built using `Streamlit`, `LangC
 - Change the vector embeddings so OpenAI is not required / alternative LLM's can be used for embeddings
 - Refactoring code into modular structure
 - Parallel processing and asynchronous operations to improve speed
-- RAG system using RAG performance improvement techniques e.g. graphRAG
+- RAG system using RAG performance improvement techniques e.g. knowledge graphs / graphRAG, agentic/semantic/context enriched chunking
 - Auto transcript of monitored youtube playlists to be incorporated into RAG system
 - Response rating (thumbs up / down)
 - More search engine options other than SearXNG (Serper, Google Custom Search API etc)
