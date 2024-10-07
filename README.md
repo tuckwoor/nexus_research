@@ -79,7 +79,7 @@ This project is a research assistant application built using `Streamlit`, `LangC
 - RAG system using RAG performance improvement techniques e.g. graphRAG
 - Auto transcript of monitored youtube playlists to be incorporated into RAG system
 - Response rating (thumbs up / down)
-- More search engine options other than SearXNG
+- More search engine options other than SearXNG (Serper, Google Custom Search API etc)
 - Better web crawl options (currently beautifulsoup)
 
 ## Customization
